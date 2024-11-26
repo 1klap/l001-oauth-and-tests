@@ -1,0 +1,12 @@
+<h1>Homes#index</h1>
+<p>Find me in app/views/homes/index.html.erb</p>
+
+<% if authenticated? %>
+  <%= button_to "Sign out", session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", new_session_path %>
+<% end %>
+
+<div>
+  Current.user&.email_address = <%= Current.user&.email_address %>
+</div>

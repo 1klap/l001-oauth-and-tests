@@ -1,0 +1,5 @@
+existing:
+  email_address: existing@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+existing_no_pass:
+  email_address: existing_no_pass@example.com

@@ -1,0 +1,4 @@
+existing:
+  user: existing
+  provider: github
+  uid: 12345
