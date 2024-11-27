@@ -3,3 +3,4 @@ existing:
   password_digest: <%= BCrypt::Password.create("password") %>
 existing_no_pass:
   email_address: existing_no_pass@example.com
+  password_digest: <%= BCrypt::Password.create(SecureRandom.base64(64).truncate_bytes(64)) %>

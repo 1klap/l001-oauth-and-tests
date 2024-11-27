@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_secure_password validations: false
+  has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :omni_auth_identities, dependent: :destroy
 
@@ -9,15 +9,12 @@ class User < ApplicationRecord
   validates :password, on: [ :registration, :password_change ],
             presence: true,
             length: { minimum: 8, maximum: 72 }
-  validates_with Validators::PasswordMaxLength, fields: [ :password ], on: [ :registration, :password_change ]
-  validates_presence_of :password_confirmation, on: [ :password_change ]
-  validates_confirmation_of :password, on: [ :password_change ]
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   def self.create_from_oauth(auth)
     email = auth.info.email
-    user = self.new email_address: email
+    user = self.new email_address: email, password: SecureRandom.base64(64).truncate_bytes(64)
     # assign_names_from_auth(auth, user)
     user.save
     user

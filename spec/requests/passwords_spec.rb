@@ -54,11 +54,6 @@ RSpec.describe "Password", type: :request do
       token = user.password_reset_token
 
       expect do
-        patch password_path(token), params: { password: "W3lcome?" }
-      end.not_to change { user.password_digest }
-      expect(response).to redirect_to(edit_password_path(token))
-
-      expect do
         patch password_path(token), params: { password: "W3lcome?", password_confirmation: "somethingelse" }
       end.not_to change { user.password_digest }
       expect(response).to redirect_to(edit_password_path(token))
@@ -69,10 +64,18 @@ RSpec.describe "Password", type: :request do
       expect(response).to redirect_to(edit_password_path(token))
 
       expect do
+        patch password_path(token), params: { password: "W3lcome?" }
+      end.to change { user.reload.password_digest }
+      expect(response).to redirect_to(new_session_path)
+      expect(User.authenticate_by(email_address: user.email_address, password: "W3lcome?")).to_not be_nil
+
+      # Reset the token after a successful password change
+      token = user.password_reset_token
+
+      expect do
         patch password_path(token), params: { password: "W3lcome?", password_confirmation: "W3lcome?" }
       end.to change { user.reload.password_digest }
       expect(response).to redirect_to(new_session_path)
-
       expect(User.authenticate_by(email_address: user.email_address, password: "W3lcome?")).to_not be_nil
     end
   end
