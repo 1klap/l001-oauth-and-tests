@@ -34,7 +34,7 @@ class Sessions::OmniAuthsController < ApplicationController
         user = User.find_by(email_address: auth.info.email) || User.create_from_oauth(auth)
         identity = OmniAuthIdentity.create(uid: uid, provider: provider, user: user)
       end
-      start_new_session_for identity.user, provider
+      start_new_session_for identity.user, source: provider
       redirect_to redirect_path, notice: "Signed in!"
     end
   end
