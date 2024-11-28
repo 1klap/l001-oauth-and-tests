@@ -27,24 +27,24 @@ class User < ApplicationRecord
 
   private
 
-    # def self.assign_names_from_auth(auth, user)
-    #   provider = auth["provider"]
-    #   case provider
-    #   when "developer"
-    #     if user.first_name.blank? && user.last_name.blank?
-    #       user.first_name = auth.info.name
-    #       user.last_name = "Developer"
-    #     end
-    #   when "google_oauth2"
-    #     if user.first_name.blank? && user.last_name.blank?
-    #       user.first_name = auth.info.first_name
-    #       user.last_name = auth.info.last_name
-    #     end
-    #   when "github"
-    #     if user.first_name.blank? && user.last_name.blank?
-    #       user.first_name = auth.info.first_name
-    #       user.last_name = auth.info.last_name
-    #     end
-    #   end
-    # end
+  # def self.assign_names_from_auth(auth, user)
+  #   provider = auth["provider"]
+  #   case provider
+  #   when "developer"
+  #     if user.first_name.blank? && user.last_name.blank?
+  #       user.first_name = auth.info.name
+  #       user.last_name = "Developer"
+  #     end
+  #   when "google_oauth2"
+  #     if user.first_name.blank? && user.last_name.blank?
+  #       user.first_name = auth.info.first_name
+  #       user.last_name = auth.info.last_name
+  #     end
+  #   when "github"
+  #     if user.first_name.blank? && user.last_name.blank?
+  #       user.first_name = auth.info.first_name
+  #       user.last_name = auth.info.last_name
+  #     end
+  #   end
+  # end
 end
