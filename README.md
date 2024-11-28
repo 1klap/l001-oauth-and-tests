@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a companion project for [this article](https://railsguru.dev/lessons/rails-8-oauth-and-rspec-tests)
 
-Things you may want to cover:
+## TL;DR
 
-* Ruby version
+Rails 8 ships with a new built-in generator that helps you to get started with authentication. However, while it covers 
+the bases, often something more is needed. OAuth Sign In reduces friction for the user and removes (to a degree) the 
+burden of password management. Better test coverage helps with developer productivity and product reliability.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The goal of this lesson is to make those steps as easy as possible.
